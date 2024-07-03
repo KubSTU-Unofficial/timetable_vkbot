@@ -1,9 +1,13 @@
+import { MessageContext, ContextDefaultState, Context } from "vk-io";
 import Command from "../struct/Command.js";
+import { HearConditions } from "@vk-io/hear";
 
 export default class StartCommand extends Command {
-    name:string = "/start";
+    condition: HearConditions<Context<object, ContextDefaultState, string, string>> = '/start';
 
-    async exec(ctx: VkBotContext): Promise<void> {
-        ctx.reply('Хелло!');
-    }   
+    exec(msg: MessageContext<ContextDefaultState> & object): unknown {
+        msg.send("Совершаю пространственный переход между сценами!");
+
+        return msg.scene.enter('signup');
+    }
 }

@@ -1,24 +1,27 @@
 {
-  "name": "timetable_vkbot",
+  "name": "kubstu_timetable_vkbot",
   "version": "1.0.0",
   "main": "./dist/index.js",
-  "type": "module",
   "scripts": {
     "start": "node --env-file=.env ."
   },
-  "author": "",
+  "type": "module",
+  "author": "Electroplayer",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "fs": "^0.0.1-security",
-    "node-vk-bot-api": "^3.5.0",
-    "typescript": "^5.4.5"
-  },
+  "description": "Vk bot for KubSTU",
   "devDependencies": {
-    "@eslint/js": "^9.3.0",
-    "@types/node": "^20.12.12",
-    "eslint": "^9.3.0",
-    "globals": "^15.3.0",
-    "typescript-eslint": "^7.11.0"
+    "@eslint/js": "^9.6.0",
+    "@types/node": "^20.14.9",
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
+    "typescript-eslint": "^7.15.0"
+  },
+  "dependencies": {
+    "@vk-io/hear": "^1.1.1",
+    "@vk-io/scenes": "^1.2.1",
+    "@vk-io/session": "^2.2.1",
+    "fs": "^0.0.1-security",
+    "typescript": "^5.5.3",
+    "vk-io": "^4.9.1"
   }
 }
