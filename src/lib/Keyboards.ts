@@ -1,4 +1,5 @@
 import { Keyboard } from "vk-io";
+import { daysOdd, daysEven } from "../shared/lib/Utils.js";
 
 export const institutes = Keyboard.builder().textButton({
     label: 'ИНГиЭ',
@@ -9,16 +10,16 @@ export const institutes = Keyboard.builder().textButton({
 }).textButton({
     label: 'ИПиПП',
     payload: { id: 490 }
-}).textButton({
+}).row().textButton({
     label: 'ИЭУиБ',
     payload: { id: 29 }
-}).row().textButton({
+}).textButton({
     label: 'ИСиТИ',
     payload: { id: 538 }
 }).textButton({
     label: 'ИМРИТиТС',
     payload: { id: 539 }
-}).textButton({
+}).row().textButton({
     label: 'ИФН',
     payload: { id: 540 }
 }).textButton({
@@ -46,4 +47,31 @@ export const kurses = Keyboard.builder().textButton({
     payload: { num: 6 }
 }).oneTime()
 
-export default { institutes }
+export function selectingDay() {
+    let keyboard = Keyboard.builder();
+    let now = new Date();
+    let day = now.getDay();
+    let week = now.getWeek()%2 == 0;
+
+    for(let i = 1;i<=6;i++) {
+        keyboard.textButton({
+            label: week ? daysEven[i-1] : daysOdd[i-1],
+            payload: {
+                day: i,
+                week: week,
+            },
+            color: day == i && week ? 'positive' : 'secondary'
+        }).textButton({
+            label: !week ? daysEven[i-1] : daysOdd[i-1],
+            payload: {
+                day: i,
+                week: !week
+            },
+            color: day == i && !week ? 'positive' : 'secondary'
+        }).row()
+    }
+
+    return keyboard;
+}
+
+export default { institutes, kurses, selectingDay }

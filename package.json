@@ -21,6 +21,9 @@
     "@vk-io/scenes": "^1.2.1",
     "@vk-io/session": "^2.2.1",
     "fs": "^0.0.1-security",
+    "https": "^1.0.0",
+    "mongoose": "^8.4.4",
+    "node-fetch": "^3.3.2",
     "typescript": "^5.5.3",
     "vk-io": "^4.9.1"
   }

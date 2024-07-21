@@ -1,12 +1,14 @@
-import { MessageContext, ContextDefaultState, Context } from "vk-io";
+import { MessageContext, ContextDefaultState } from "vk-io";
 import Command from "../struct/Command.js";
-import { HearConditions } from "@vk-io/hear";
 
 export default class StartCommand extends Command {
-    condition: HearConditions<Context<object, ContextDefaultState, string, string>> = '/start';
+    condition = '/start';
 
     exec(msg: MessageContext<ContextDefaultState> & object): unknown {
-        msg.send("Совершаю пространственный переход между сценами!");
+        if(msg.state.user.group) {
+            return msg.send("Приветствую!", msg.state.user.getMainKeyboard());
+        }
+        msg.send("Приветствую! Для работы мне нужно немного информации");
 
         return msg.scene.enter('signup');
     }
